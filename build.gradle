@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'ru.netoligy.services'
+group = 'ru.netology.services'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -15,4 +15,11 @@ dependencies {
 
 test {
     useTestNG()
+}
+dependencies {
+    testImplementation 'junit:junit:4.13'
+}
+
+test {
+    useJUnit()
 }
