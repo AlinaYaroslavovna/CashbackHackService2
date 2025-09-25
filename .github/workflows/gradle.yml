@@ -1,25 +1,24 @@
-name: Java CI with Gradle
+# .github/workflows/gradle.yml
+name: Gradle Build
 
 on:
   push:
-    branches: [ '**' ]
+    branches: [ main, testng, junit4 ] # Запускать при пуше в ветки main, testng, junit4
   pull_request:
-    branches: [ '**' ]
-  workflow_dispatch:
+    branches: [ main, testng, junit4 ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17 for Gradle execution 
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17' 
-        distribution: 'temurin'
-        cache: 'gradle'
-    - name: Build with Gradle
-      run: gradle build
-    - name: Run tests with Gradle
-      run: gradle test
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
