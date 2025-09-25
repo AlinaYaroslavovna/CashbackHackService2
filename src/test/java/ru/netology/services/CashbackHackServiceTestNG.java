@@ -28,7 +28,7 @@ public class CashbackHackServiceTestNG {
     @Test
     public void shouldReturnRemainingWhenAmountIsGreaterThanBoundary() {
         int amount = 1100;
-        int expected = 900; // 1000 - 1100 % 1000 = 1000 - 100 = 900 (ошибка)
+        int expected = 900; // 1000 - 1100 % 1000 = 1000 - 100 = 900
         int actual = service.remain(amount);
         Assert.assertEquals(actual, expected, "При сумме 1100 должно оставаться 900 (по ошибке).");
     }
@@ -43,10 +43,10 @@ public class CashbackHackServiceTestNG {
 
     @Test
     public void shouldReturnAlmostFullBoundaryWhenAmountIsOne() {
-        int amount = 1;
-        int expected = 999; // 1000 - 1 % 1000 = 1000 - 1 = 999
+        int amount = 1000;
+        int expected = 0;
         int actual = service.remain(amount);
-        Assert.assertEquals(actual, expected, "При сумме 1 должно оставаться 999.");
+        Assert.assertEquals(actual, expected, "При сумме 1000 должно оставаться 0.");
     }
 
     @Test
